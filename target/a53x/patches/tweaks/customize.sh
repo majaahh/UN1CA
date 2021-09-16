@@ -4,3 +4,12 @@ EVAL "sed -i \"s/0\-5/0\-7/g\" \"$WORK_DIR/vendor/etc/task_profiles.json\""
 LOG "- Replacing every occurrence of 6-7 with 0-7 in /vendor/etc/task_profiles.json"
 EVAL "sed -i \"s/6\-7/0\-7/g\" \"$WORK_DIR/vendor/etc/task_profiles.json\""
 LOG_STEP_OUT
+
+# Enable RAW Support
+# Before: [cbz param_1, 0x001564d6]
+# After: [nop]
+HEX_PATCH "$WORK_DIR/vendor/lib/libexynoscamera3.so" "f0b12749" "00bf2749"
+
+# Before: [tbz w8, #0x0, 0x0029dc44]
+# After: [nop]
+HEX_PATCH "$WORK_DIR/vendor/lib64/libexynoscamera3.so" "88020036410d0090" "1f2003d5410d0090"
