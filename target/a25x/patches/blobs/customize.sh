@@ -1,0 +1,31 @@
+LOG_STEP_IN "- Replacing Audio blobs"
+DELETE_FROM_WORK_DIR "system" "system/lib/lib_SoundBooster_ver1100.so"
+DELETE_FROM_WORK_DIR "system" "system/lib64/lib_SoundBooster_ver1100.so"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib/lib_SoundAlive_play_plus_ver500.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib/lib_SoundBooster_ver1130.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/lib_soundaliveresampler.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/lib_SoundAlive_play_plus_ver500.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/lib_SoundBooster_ver1130.so" 0 0 644 "u:object_r:system_lib_file:s0"
+LOG_STEP_OUT
+
+LOG_STEP_IN "- Replacing engmode blobs"
+DELETE_FROM_WORK_DIR "system" "system/lib/vendor.samsung.hardware.security.engmode@1.0.so"
+DELETE_FROM_WORK_DIR "system" "system/lib64/vendor.samsung.hardware.security.engmode@1.0.so"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib/lib.engmode.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib/lib.engmodejni.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib/vendor.samsung.hardware.security.engmode-V1-ndk.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/lib.engmode.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/lib.engmodejni.samsung.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/vendor.samsung.hardware.security.engmode-V1-ndk.so" 0 0 644 "u:object_r:system_lib_file:s0"
+LOG_STEP_OUT
+
+LOG_STEP_IN "- Replacing vaultkeeper blobs"
+DELETE_FROM_WORK_DIR "system" "system/lib/vendor.samsung.hardware.security.vaultkeeper@2.0.so"
+DELETE_FROM_WORK_DIR "system" "system/lib64/vendor.samsung.hardware.security.vaultkeeper@2.0.so"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib/libvkjni.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib/libvkmanager.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib/vendor.samsung.hardware.security.vaultkeeper-V1-ndk.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/libvkmanager.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/libvkjni.so" 0 0 644 "u:object_r:system_lib_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "system" "system/lib64/vendor.samsung.hardware.security.vaultkeeper-V1-ndk.so" 0 0 644 "u:object_r:system_lib_file:s0"
+LOG_STEP_OUT
