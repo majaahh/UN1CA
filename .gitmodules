@@ -26,3 +26,7 @@
 	path = target/a53x/patches/variants
 	url = https://github.com/majaahh/unica_target_a53x_patches_variants.git
 	ignore = dirty
+[submodule "target/a25x/patches/variants"]
+	path = target/a25x/patches/variants
+	url = https://github.com/majaahh/unica_target_a25x_patches_variants.git
+	ignore = dirty
