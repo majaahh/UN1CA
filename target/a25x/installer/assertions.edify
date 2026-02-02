@@ -1,3 +1,11 @@
+if getprop("ro.boot.em.model") == "SM-A2560" && getprop("ro.boot.bootloader") != "A2560ZHS7CYG4" then
+    abort("E3004: This package requires \"A2560ZHS7CYG4\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
+endif;
+
+if getprop("ro.boot.em.model") == "SM-A256E" && getprop("ro.boot.bootloader") != "A256EXXS8CYG3" then
+    abort("E3004: This package requires \"A256EXXS8CYG3\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
+endif;
+
 if getprop("ro.boot.em.model") == "SM-A256B" && getprop("ro.boot.bootloader") != "A256BXXS8CYG4" then
     abort("E3004: This package requires \"A256BXXS8CYG4\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
 endif;
