@@ -1,0 +1,5 @@
+vendor/etc/snap_gpu_kernel_64.bin 0 0 644 capabilities=0x0
+vendor/etc/snaplite_cache.bin 0 0 644 capabilities=0x0
+vendor/etc/permissions/android.hardware.vulkan.version.xml 0 0 644 capabilities=0x0
+vendor/lib/egl/libGLES_mali.so 0 0 644 capabilities=0x0
+vendor/lib64/egl/libGLES_mali.so 0 0 644 capabilities=0x0
