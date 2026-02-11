@@ -14,4 +14,5 @@
     <dimen name="rounded_corner_radius_top">34.0dp</dimen>
     <dimen name="status_bar_height_portrait">4.060974mm</dimen>
     <dimen name="status_bar_indicator_padding">55.0px</dimen>
+    <dimen name="physical_power_button_center_screen_location_y">1150px</dimen>
 </resources>
