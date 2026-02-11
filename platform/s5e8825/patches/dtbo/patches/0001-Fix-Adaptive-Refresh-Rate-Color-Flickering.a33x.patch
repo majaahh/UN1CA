@@ -1,0 +1,337 @@
+From 3f2ab9c9f7003e10a2e55995a40ce53afc19613a Mon Sep 17 00:00:00 2001
+From: Majaahh <maja.blaszczak@proton.me>
+Date: Wed, 30 Apr 2025 21:49:59 +0200
+Subject: [PATCH] Fix Adaptive Refresh Rate Color Flickering
+
+Change-Id: I424d62c101761c59d700c3772f0097028c34e35b
+Signed-off-by: Majaahh <maja.blaszczak@proton.me>
+---
+ dtsi.0 | 22 +++++++++++-----------
+ dtsi.1 | 22 +++++++++++-----------
+ dtsi.2 | 22 +++++++++++-----------
+ dtsi.3 | 22 +++++++++++-----------
+ dtsi.4 | 22 +++++++++++-----------
+ 5 files changed, 55 insertions(+), 55 deletions(-)
+
+diff --git a/dtsi.0 b/dtsi.0
+index 49d97e7..341f128 100644
+--- a/dtsi.0
++++ b/dtsi.0
+@@ -2297,12 +2297,12 @@
+ 					cmd_underrun_cnt = <0xf77>;
+ 				};
+ 
+-				1080x2400@60hs {
+-					mode-name = "1080x2400@60hs";
++				1080x2400@60phs {
++					mode-name = "1080x2400@60phs";
+ 					pmsk = <0x03 0xfe 0x02 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00>;
+ 					hs-clk = <0x44c>;
+ 					esc-clk = <0x14>;
+-					cmd_underrun_cnt = <0x1e3d>;
++					cmd_underrun_cnt = <0xf77>;
+ 				};
+ 
+ 				1080x2400@30ns {
+@@ -2349,26 +2349,26 @@
+ 					phandle = <0x2b>;
+ 				};
+ 
+-				a33x_s6e3fc3_panel_display_mode_1080x2400_60hs {
+-					id = "1080x2400_60HS";
++				a33x_s6e3fc3_panel_display_mode_1080x2400_60phs {
++					id = "1080x2400_60HS_90HS_TE_HW_SKIP_1";
+ 					width = <0x438>;
+ 					height = <0x960>;
+ 					refresh_rate = <0x3c>;
+-					refresh_mode = <0x01>;
+-					panel_refresh_rate = <0x3c>;
++					refresh_mode = <0x02>;
++					panel_refresh_rate = <0x5a>;
+ 					panel_refresh_mode = <0x01>;
+ 					panel_te_st = <0x00>;
+ 					panel_te_ed = <0x00>;
+ 					panel_te_sw_skip_count = <0x00>;
+-					panel_te_hw_skip_count = <0x00>;
++					panel_te_hw_skip_count = <0x01>;
+ 					panel_h_porch = <0x00 0x00 0x00>;
+-					panel_v_porch = <0x00 0x4b0 0x00>;
++					panel_v_porch = <0x00 0x00 0x00>;
+ 					dsc_en = <0x01>;
+ 					dsc_cnt = <0x01>;
+ 					dsc_slice_num = <0x02>;
+ 					dsc_slice_w = <0x21c>;
+ 					dsc_slice_h = <0x28>;
+-					cmd_lp_ref = <0x1e3d>;
++					cmd_lp_ref = <0xf77>;
+ 					phandle = <0x2c>;
+ 				};
+ 
+@@ -8026,7 +8026,7 @@
+ 		ddi_vdd3 = "/fragment@panel_drv/__overlay__/panel_drv_0/regulators/ddi-vdd3";
+ 		a33x_s6e3fc3_panel_display_modes = "/fragment@panel_display_mode/__overlay__/a33x_s6e3fc3_panel_display_modes";
+ 		a33x_s6e3fc3_panel_display_mode_1080x2400_90hs = "/fragment@panel_display_mode/__overlay__/a33x_s6e3fc3_panel_display_modes/a33x_s6e3fc3_panel_display_mode_1080x2400_90hs";
+-		a33x_s6e3fc3_panel_display_mode_1080x2400_60hs = "/fragment@panel_display_mode/__overlay__/a33x_s6e3fc3_panel_display_modes/a33x_s6e3fc3_panel_display_mode_1080x2400_60hs";
++		a33x_s6e3fc3_panel_display_mode_1080x2400_60phs = "/fragment@panel_display_mode/__overlay__/a33x_s6e3fc3_panel_display_modes/a33x_s6e3fc3_panel_display_mode_1080x2400_60phs";
+ 		a33x_s6e3fc3_panel_display_mode_1080x2400_30ns = "/fragment@panel_display_mode/__overlay__/a33x_s6e3fc3_panel_display_modes/a33x_s6e3fc3_panel_display_mode_1080x2400_30ns";
+ 		hl7132_charger = "/fragment@4/__overlay__/hl7132@5E";
+ 		hall_irq = "/fragment@5/__overlay__/hall_irq";
+diff --git a/dtsi.1 b/dtsi.1
+index 0b3db34..88717b9 100644
+--- a/dtsi.1
++++ b/dtsi.1
+@@ -1051,12 +1051,12 @@
+ 					cmd_underrun_cnt = <0xf77>;
+ 				};
+ 
+-				1080x2400@60hs {
+-					mode-name = "1080x2400@60hs";
++				1080x2400@60phs {
++					mode-name = "1080x2400@60phs";
+ 					pmsk = <0x02 0x8a 0x02 0x2762 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00>;
+ 					hs-clk = <0x382>;
+ 					esc-clk = <0x14>;
+-					cmd_underrun_cnt = <0x1e3d>;
++					cmd_underrun_cnt = <0xf77>;
+ 				};
+ 			};
+ 		};
+@@ -1096,18 +1096,18 @@
+ 					phandle = <0x25>;
+ 				};
+ 
+-				a33x_s6e8fc3_panel_display_mode_1080x2400_60hs {
+-					id = "1080x2400_60HS";
++				a33x_s6e8fc3_panel_display_mode_1080x2400_60phs {
++					id = "1080x2400_60HS_90HS_TE_HW_SKIP_1";
+ 					width = <0x438>;
+ 					height = <0x960>;
+ 					refresh_rate = <0x3c>;
+-					refresh_mode = <0x01>;
+-					panel_refresh_rate = <0x3c>;
++					refresh_mode = <0x02>;
++					panel_refresh_rate = <0x5a>;
+ 					panel_refresh_mode = <0x01>;
+ 					panel_te_st = <0x00>;
+ 					panel_te_ed = <0x00>;
+ 					panel_te_sw_skip_count = <0x00>;
+-					panel_te_hw_skip_count = <0x00>;
++					panel_te_hw_skip_count = <0x01>;
+ 					dsc_en = <0x01>;
+ 					dsc_cnt = <0x01>;
+ 					dsc_slice_num = <0x02>;
+@@ -1115,8 +1115,8 @@
+ 					dsc_slice_h = <0x28>;
+ 					panel_video_mode;
+ 					panel_h_porch = <0x1e 0x46 0x14>;
+-					panel_v_porch = <0x0e 0x500 0x02>;
+-					cmd_lp_ref = <0x1e3d>;
++					panel_v_porch = <0x0e 0x30 0x02>;
++					cmd_lp_ref = <0xf77>;
+ 					phandle = <0x26>;
+ 				};
+ 			};
+@@ -7978,7 +7978,7 @@
+ 		ddi_vdd3 = "/fragment@panel_drv/__overlay__/panel_drv_0/regulators/ddi-vdd3";
+ 		a33x_s6e8fc3_panel_display_modes = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes";
+ 		a33x_s6e8fc3_panel_display_mode_1080x2400_90hs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_90hs";
+-		a33x_s6e8fc3_panel_display_mode_1080x2400_60hs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_60hs";
++		a33x_s6e8fc3_panel_display_mode_1080x2400_60phs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_60phs";
+ 		hl7132_charger = "/fragment@2/__overlay__/hl7132@5E";
+ 		hall_irq = "/fragment@3/__overlay__/hall_irq";
+ 		certify_hall_irq = "/fragment@4/__overlay__/certify_hall_irq";
+diff --git a/dtsi.2 b/dtsi.2
+index 6bf2a7e..b697d8e 100644
+--- a/dtsi.2
++++ b/dtsi.2
+@@ -1051,12 +1051,12 @@
+ 					cmd_underrun_cnt = <0xf77>;
+ 				};
+ 
+-				1080x2400@60hs {
+-					mode-name = "1080x2400@60hs";
++				1080x2400@60phs {
++					mode-name = "1080x2400@60phs";
+ 					pmsk = <0x02 0x8a 0x02 0x2762 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00>;
+ 					hs-clk = <0x382>;
+ 					esc-clk = <0x14>;
+-					cmd_underrun_cnt = <0x1e3d>;
++					cmd_underrun_cnt = <0xf77>;
+ 				};
+ 			};
+ 		};
+@@ -1096,18 +1096,18 @@
+ 					phandle = <0x25>;
+ 				};
+ 
+-				a33x_s6e8fc3_panel_display_mode_1080x2400_60hs {
+-					id = "1080x2400_60HS";
++				a33x_s6e8fc3_panel_display_mode_1080x2400_60phs {
++					id = "1080x2400_60HS_90HS_TE_HW_SKIP_1";
+ 					width = <0x438>;
+ 					height = <0x960>;
+ 					refresh_rate = <0x3c>;
+-					refresh_mode = <0x01>;
+-					panel_refresh_rate = <0x3c>;
++					refresh_mode = <0x02>;
++					panel_refresh_rate = <0x5a>;
+ 					panel_refresh_mode = <0x01>;
+ 					panel_te_st = <0x00>;
+ 					panel_te_ed = <0x00>;
+ 					panel_te_sw_skip_count = <0x00>;
+-					panel_te_hw_skip_count = <0x00>;
++					panel_te_hw_skip_count = <0x01>;
+ 					dsc_en = <0x01>;
+ 					dsc_cnt = <0x01>;
+ 					dsc_slice_num = <0x02>;
+@@ -1115,8 +1115,8 @@
+ 					dsc_slice_h = <0x28>;
+ 					panel_video_mode;
+ 					panel_h_porch = <0x1e 0x46 0x14>;
+-					panel_v_porch = <0x0e 0x500 0x02>;
+-					cmd_lp_ref = <0x1e3d>;
++					panel_v_porch = <0x0e 0x30 0x02>;
++					cmd_lp_ref = <0xf77>;
+ 					phandle = <0x26>;
+ 				};
+ 			};
+@@ -8167,7 +8167,7 @@
+ 		ddi_vdd3 = "/fragment@panel_drv/__overlay__/panel_drv_0/regulators/ddi-vdd3";
+ 		a33x_s6e8fc3_panel_display_modes = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes";
+ 		a33x_s6e8fc3_panel_display_mode_1080x2400_90hs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_90hs";
+-		a33x_s6e8fc3_panel_display_mode_1080x2400_60hs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_60hs";
++		a33x_s6e8fc3_panel_display_mode_1080x2400_60phs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_60phs";
+ 		sm5451_charger = "/fragment@2/__overlay__/sm5451@63";
+ 		hall_irq = "/fragment@5/__overlay__/hall_irq";
+ 		certify_hall_irq = "/fragment@6/__overlay__/certify_hall_irq";
+diff --git a/dtsi.3 b/dtsi.3
+index a95d1d8..89717de 100644
+--- a/dtsi.3
++++ b/dtsi.3
+@@ -1051,12 +1051,12 @@
+ 					cmd_underrun_cnt = <0xf77>;
+ 				};
+ 
+-				1080x2400@60hs {
+-					mode-name = "1080x2400@60hs";
++				1080x2400@60phs {
++					mode-name = "1080x2400@60phs";
+ 					pmsk = <0x02 0x8a 0x02 0x2762 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00>;
+ 					hs-clk = <0x382>;
+ 					esc-clk = <0x14>;
+-					cmd_underrun_cnt = <0x1e3d>;
++					cmd_underrun_cnt = <0xf77>;
+ 				};
+ 			};
+ 		};
+@@ -1096,18 +1096,18 @@
+ 					phandle = <0x25>;
+ 				};
+ 
+-				a33x_s6e8fc3_panel_display_mode_1080x2400_60hs {
+-					id = "1080x2400_60HS";
++				a33x_s6e8fc3_panel_display_mode_1080x2400_60phs {
++					id = "1080x2400_60HS_90HS_TE_HW_SKIP_1";
+ 					width = <0x438>;
+ 					height = <0x960>;
+ 					refresh_rate = <0x3c>;
+-					refresh_mode = <0x01>;
+-					panel_refresh_rate = <0x3c>;
++					refresh_mode = <0x02>;
++					panel_refresh_rate = <0x5a>;
+ 					panel_refresh_mode = <0x01>;
+ 					panel_te_st = <0x00>;
+ 					panel_te_ed = <0x00>;
+ 					panel_te_sw_skip_count = <0x00>;
+-					panel_te_hw_skip_count = <0x00>;
++					panel_te_hw_skip_count = <0x01>;
+ 					dsc_en = <0x01>;
+ 					dsc_cnt = <0x01>;
+ 					dsc_slice_num = <0x02>;
+@@ -1115,8 +1115,8 @@
+ 					dsc_slice_h = <0x28>;
+ 					panel_video_mode;
+ 					panel_h_porch = <0x1e 0x46 0x14>;
+-					panel_v_porch = <0x0e 0x500 0x02>;
+-					cmd_lp_ref = <0x1e3d>;
++					panel_v_porch = <0x0e 0x30 0x02>;
++					cmd_lp_ref = <0xf77>;
+ 					phandle = <0x26>;
+ 				};
+ 			};
+@@ -8158,7 +8158,7 @@
+ 		ddi_vdd3 = "/fragment@panel_drv/__overlay__/panel_drv_0/regulators/ddi-vdd3";
+ 		a33x_s6e8fc3_panel_display_modes = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes";
+ 		a33x_s6e8fc3_panel_display_mode_1080x2400_90hs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_90hs";
+-		a33x_s6e8fc3_panel_display_mode_1080x2400_60hs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_60hs";
++		a33x_s6e8fc3_panel_display_mode_1080x2400_60phs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_60phs";
+ 		sm5451_charger = "/fragment@2/__overlay__/sm5451@63";
+ 		hall_irq = "/fragment@4/__overlay__/hall_irq";
+ 		certify_hall_irq = "/fragment@5/__overlay__/certify_hall_irq";
+diff --git a/dtsi.4 b/dtsi.4
+index f242ceb..6820491 100644
+--- a/dtsi.4
++++ b/dtsi.4
+@@ -1051,12 +1051,12 @@
+ 					cmd_underrun_cnt = <0xf77>;
+ 				};
+ 
+-				1080x2400@60hs {
+-					mode-name = "1080x2400@60hs";
++				1080x2400@60phs {
++					mode-name = "1080x2400@60phs";
+ 					pmsk = <0x02 0x8a 0x02 0x2762 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00>;
+ 					hs-clk = <0x382>;
+ 					esc-clk = <0x14>;
+-					cmd_underrun_cnt = <0x1e3d>;
++					cmd_underrun_cnt = <0xf77>;
+ 				};
+ 			};
+ 		};
+@@ -1096,18 +1096,18 @@
+ 					phandle = <0x25>;
+ 				};
+ 
+-				a33x_s6e8fc3_panel_display_mode_1080x2400_60hs {
+-					id = "1080x2400_60HS";
++				a33x_s6e8fc3_panel_display_mode_1080x2400_60phs {
++					id = "1080x2400_60HS_90HS_TE_HW_SKIP_1";
+ 					width = <0x438>;
+ 					height = <0x960>;
+ 					refresh_rate = <0x3c>;
+-					refresh_mode = <0x01>;
+-					panel_refresh_rate = <0x3c>;
++					refresh_mode = <0x02>;
++					panel_refresh_rate = <0x5a>;
+ 					panel_refresh_mode = <0x01>;
+ 					panel_te_st = <0x00>;
+ 					panel_te_ed = <0x00>;
+ 					panel_te_sw_skip_count = <0x00>;
+-					panel_te_hw_skip_count = <0x00>;
++					panel_te_hw_skip_count = <0x01>;
+ 					dsc_en = <0x01>;
+ 					dsc_cnt = <0x01>;
+ 					dsc_slice_num = <0x02>;
+@@ -1115,8 +1115,8 @@
+ 					dsc_slice_h = <0x28>;
+ 					panel_video_mode;
+ 					panel_h_porch = <0x1e 0x46 0x14>;
+-					panel_v_porch = <0x0e 0x500 0x02>;
+-					cmd_lp_ref = <0x1e3d>;
++					panel_v_porch = <0x0e 0x30 0x02>;
++					cmd_lp_ref = <0xf77>;
+ 					phandle = <0x26>;
+ 				};
+ 			};
+@@ -8161,7 +8161,7 @@
+ 		ddi_vdd3 = "/fragment@panel_drv/__overlay__/panel_drv_0/regulators/ddi-vdd3";
+ 		a33x_s6e8fc3_panel_display_modes = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes";
+ 		a33x_s6e8fc3_panel_display_mode_1080x2400_90hs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_90hs";
+-		a33x_s6e8fc3_panel_display_mode_1080x2400_60hs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_60hs";
++		a33x_s6e8fc3_panel_display_mode_1080x2400_60phs = "/fragment@panel_display_mode/__overlay__/a33x_s6e8fc3_panel_display_modes/a33x_s6e8fc3_panel_display_mode_1080x2400_60phs";
+ 		sm5451_charger = "/fragment@2/__overlay__/sm5451@63";
+ 		hall_irq = "/fragment@4/__overlay__/hall_irq";
+ 		certify_hall_irq = "/fragment@5/__overlay__/certify_hall_irq";
+-- 
+2.53.0
+
