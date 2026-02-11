@@ -1,3 +1,15 @@
 if getprop("ro.boot.em.model") == "SM-A336B" && getprop("ro.boot.bootloader") != "A336BXXSEFYH2" then
     abort("E3004: This package requires \"A336BXXSEFYH2\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
 endif;
+
+if getprop("ro.boot.em.model") == "SM-A336E" && getprop("ro.boot.bootloader") != "A336EDXSEFYH2" then
+    abort("E3004: This package requires \"A336EDXSEFYH2\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
+endif;
+
+if getprop("ro.boot.em.model") == "SM-A336M" && getprop("ro.boot.bootloader") != "A336MUBSEFYH2" then
+    abort("E3004: This package requires \"A336MUBSEFYH2\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
+endif;
+
+if getprop("ro.boot.em.model") == "SM-A336N" && getprop("ro.boot.bootloader") != "A336NKSSBFYH1" then
+    abort("E3004: This package requires \"A336NKSSBFYH1\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
+endif;
