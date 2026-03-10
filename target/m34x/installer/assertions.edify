@@ -1,3 +1,15 @@
+if getprop("ro.boot.em.model") == "SM-E346B" && getprop("ro.boot.bootloader") != "E346BXXS8DYH1" then
+    abort("E3004: This package requires \"E346BXXS8DYH1\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
+endif;
+
 if getprop("ro.boot.em.model") == "SM-M346B" && getprop("ro.boot.bootloader") != "M346BXXS8DYH1" then
     abort("E3004: This package requires \"M346BXXS8DYH1\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
+endif;
+
+if getprop("ro.boot.em.model") == "SM-M346B1" && getprop("ro.boot.bootloader") != "M346B1DXS8DYH1" then
+    abort("E3004: This package requires \"M346B1DXS8DYH1\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
+endif;
+
+if getprop("ro.boot.em.model") == "SM-M346B2" && getprop("ro.boot.bootloader") != "M346B2XUS8DYH1" then
+    abort("E3004: This package requires \"M346B2XUS8DYH1\" bootloader; you have \"" + getprop("ro.boot.bootloader") + "\".");
 endif;
