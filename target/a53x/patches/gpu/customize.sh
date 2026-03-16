@@ -1,5 +1,0 @@
-ADD_TO_WORK_DIR "a54xnsxx" "vendor" "etc/snap_gpu_kernel_64.bin"
-ADD_TO_WORK_DIR "a54xnsxx" "vendor" "etc/snaplite_cache.bin"
-ADD_TO_WORK_DIR "a54xnsxx" "vendor" "etc/permissions/android.hardware.vulkan.version.xml"
-ADD_TO_WORK_DIR "a54xnsxx" "vendor" "lib/egl/libGLES_mali.so"
-ADD_TO_WORK_DIR "a54xnsxx" "vendor" "lib64/egl/libGLES_mali.so"
