@@ -92,6 +92,13 @@ SET_PROP "vendor" "sys.perf.hmp" "6:2"
 SET_PROP "vendor" "ro.security.vpnpp.release" "1.0"
 LOG_STEP_OUT
 
+LOG_STEP_IN "- Adding s5e8825 Gatekeeper blobs"
+DELETE_FROM_WORK_DIR "vendor" "lib/hw/gatekeeper.s5e8835.so"
+DELETE_FROM_WORK_DIR "vendor" "lib64/hw/gatekeeper.s5e8835.so"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib/hw/gatekeeper.s5e8825.so" 0 0 644 "u:object_r:vendor_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib64/hw/gatekeeper.s5e8825.so" 0 0 644 "u:object_r:vendor_file:s0"
+LOG_STEP_OUT
+
 LOG_STEP_IN "- Adding stock fstab"
 DELETE_FROM_WORK_DIR "vendor" "etc/fstab.s5e8835"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "etc/fstab.s5e8825" 0 0 644 "u:object_r:vendor_configs_file:s0"
