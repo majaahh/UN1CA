@@ -107,6 +107,11 @@ ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib/libteecl.so" 0 0 644 "u:object_
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib64/libteecl.so" 0 0 644 "u:object_r:same_process_hal_file:s0"
 LOG_STEP_OUT
 
+LOG_STEP_IN "- Adding stock WiFi configurations"
+DELETE_FROM_WORK_DIR "vendor" "etc/wifi"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "etc/wifi"
+LOG_STEP_OUT
+
 LOG_STEP_IN "- Adding stock fstab"
 DELETE_FROM_WORK_DIR "vendor" "etc/fstab.s5e8835"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "etc/fstab.s5e8825" 0 0 644 "u:object_r:vendor_configs_file:s0"
