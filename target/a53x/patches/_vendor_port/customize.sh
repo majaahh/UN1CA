@@ -97,4 +97,8 @@ DELETE_FROM_WORK_DIR "vendor" "etc/fstab.s5e8835"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "etc/fstab.s5e8825" 0 0 644 "u:object_r:vendor_configs_file:s0"
 LOG_STEP_OUT
 
+LOG_STEP_IN "- Adding stock uevenetd.rc"
+EVAL "cp -a \"$FW_DIR/SM-A536B_EUX/vendor/ueventd.rc\" \"$WORK_DIR/vendor/etc/ueventd.rc\""
+LOG_STEP_OUT
+
 unset TARGET_EXTRA_FIRMWARE_DIR MODEL REGION
