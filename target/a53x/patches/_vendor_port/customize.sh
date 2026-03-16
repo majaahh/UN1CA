@@ -92,4 +92,9 @@ SET_PROP "vendor" "sys.perf.hmp" "6:2"
 SET_PROP "vendor" "ro.security.vpnpp.release" "1.0"
 LOG_STEP_OUT
 
+LOG_STEP_IN "- Adding stock fstab"
+DELETE_FROM_WORK_DIR "vendor" "etc/fstab.s5e8835"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "etc/fstab.s5e8825" 0 0 644 "u:object_r:vendor_configs_file:s0"
+LOG_STEP_OUT
+
 unset TARGET_EXTRA_FIRMWARE_DIR MODEL REGION
