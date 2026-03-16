@@ -104,6 +104,14 @@ DELETE_FROM_WORK_DIR "vendor" "etc/fstab.s5e8835"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "etc/fstab.s5e8825" 0 0 644 "u:object_r:vendor_configs_file:s0"
 LOG_STEP_OUT
 
+LOG_STEP_IN "- Adding stock init scripts"
+DELETE_FROM_WORK_DIR "vendor" "etc/init/init.s5e8835.rc"
+DELETE_FROM_WORK_DIR "vendor" "etc/init/init.s5e8835.usb.rc"
+DELETE_FROM_WORK_DIR "vendor" "etc/init/teegris_tui.rc"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "etc/init/init.s5e8825.rc" 0 0 644 "u:object_r:vendor_configs_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "etc/init/init.s5e8825.usb.rc" 0 0 644 "u:object_r:vendor_configs_file:s0"
+LOG_STEP_OUT
+
 LOG_STEP_IN "- Adding stock uevenetd.rc"
 EVAL "cp -a \"$FW_DIR/SM-A536B_EUX/vendor/ueventd.rc\" \"$WORK_DIR/vendor/etc/ueventd.rc\""
 LOG_STEP_OUT
