@@ -99,6 +99,17 @@ ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib/hw/gatekeeper.s5e8825.so" 0 0 6
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib64/hw/gatekeeper.s5e8825.so" 0 0 644 "u:object_r:vendor_file:s0"
 LOG_STEP_OUT
 
+LOG_STEP_IN "- Adding stock Keymint blobs"
+DELETE_FROM_WORK_DIR "vendor" "lib64/android.hardware.security.keymint-V1-ndk.so"
+DELETE_FROM_WORK_DIR "vendor" "lib64/vendor.samsung.hardware.keymint-V2-ndk.so"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "bin/hw/android.hardware.security.keymint-service" 0 2000 755 "u:object_r:hal_keymint_default_exec:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib64/lib_android_keymaster_keymint_utils.so" 0 0 644 "u:object_r:vendor_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib64/libkeymint.so" 0 0 644 "u:object_r:vendor_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib64/libskeymint10device.so" 0 0 644 "u:object_r:vendor_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib64/libskeymint_cli.so" 0 0 644 "u:object_r:vendor_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib64/vendor.samsung.hardware.keymint-V1-ndk_platform.so" 0 0 644 "u:object_r:vendor_file:s0"
+LOG_STEP_OUT
+
 LOG_STEP_IN "- Adding stock TEEgris blobs"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "bin/tee" 0 2000 755 "u:object_r:vendor_file:s0"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "bin/tzdaemon" 0 2000 755 "u:object_r:tzdaemon_exec:s0"
