@@ -99,6 +99,14 @@ ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib/hw/gatekeeper.s5e8825.so" 0 0 6
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib64/hw/gatekeeper.s5e8825.so" 0 0 644 "u:object_r:vendor_file:s0"
 LOG_STEP_OUT
 
+LOG_STEP_IN "- Adding stock TEEgris blobs"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "bin/tee" 0 2000 755 "u:object_r:vendor_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "bin/tzdaemon" 0 2000 755 "u:object_r:tzdaemon_exec:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "bin/tzts_daemon" 0 2000 755 "u:object_r:tztsd_exec:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib/libteecl.so" 0 0 644 "u:object_r:same_process_hal_file:s0"
+ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "lib64/libteecl.so" 0 0 644 "u:object_r:same_process_hal_file:s0"
+LOG_STEP_OUT
+
 LOG_STEP_IN "- Adding stock fstab"
 DELETE_FROM_WORK_DIR "vendor" "etc/fstab.s5e8835"
 ADD_TO_WORK_DIR "$TARGET_FIRMWARE" "vendor" "etc/fstab.s5e8825" 0 0 644 "u:object_r:vendor_configs_file:s0"
