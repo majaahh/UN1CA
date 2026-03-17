@@ -1,3 +1,8 @@
+if [[ "$TARGET_CODENAME" == "m33x" ]]; then
+    LOG "\033[0;33m! Nothing to do\033[0m"
+    return 0
+fi
+
 # https://android.googlesource.com/platform/frameworks/native/+/refs/tags/android-16.0.0_r2/services/surfaceflinger/Scheduler/RefreshRateSelector.h#314
 IDLE_TIMER_MS=250
 # https://android.googlesource.com/platform/frameworks/native/+/refs/tags/android-16.0.0_r2/services/surfaceflinger/sysprop/SurfaceFlingerProperties.sysprop#346
