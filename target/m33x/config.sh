@@ -1,0 +1,14 @@
+# Copyright (c) 2026 Majaahh
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+# Device configuration file for Galaxy M34 5G (m34x)
+TARGET_NAME="Galaxy M33 5G"
+TARGET_CODENAME="m33x"
+TARGET_PLATFORM="s5e8825"
+TARGET_ASSERT_MODEL=("SM-M336B")
+TARGET_FIRMWARE="SM-M336B/EUX/353647614853423"
+TARGET_PRODUCT_SHIPPING_API_LEVEL="31"
+
+# SEC Product Feature
+TARGET_DVFSAPP_CONFIG_SSRM_POLICY_FILENAME="ssrm_default"
+TARGET_FINGERPRINT_CONFIG_SENSOR="google_touch_side,settings=3,navi=1"
