@@ -11,7 +11,6 @@ KERNEL_URL="https://api.github.com/repos/UN1CA/kernel_samsung_s5e8825/releases/l
 KERNEL_URL="$(curl -fsSL "$KERNEL_URL")"
 KERNEL_ARCHIVE_URL="$(GET_URL "^UN1CA_Kernel-.*-a53x\.tar$")"
 DTBO_ARCHIVE_URL="$(GET_URL "^UN1CA_DTBO-.*-a53x\.tar$")"
-DTBO_JPN_ARCHIVE_URL="$(GET_URL "^UN1CA_DTBO-.*-a53x_jpn\.tar$")"
 
 if [[ -d "$TMP_DIR" ]]; then
     EVAL "rm -rf \"$TMP_DIR\""
@@ -20,7 +19,6 @@ EVAL "mkdir -p \"$TMP_DIR\""
 
 DOWNLOAD_FILE "$KERNEL_ARCHIVE_URL" "$TMP_DIR/$(basename "$KERNEL_ARCHIVE_URL")" &
 DOWNLOAD_FILE "$DTBO_ARCHIVE_URL" "$TMP_DIR/$(basename "$DTBO_ARCHIVE_URL")" &
-DOWNLOAD_FILE "$DTBO_JPN_ARCHIVE_URL" "$TMP_DIR/$(basename "$DTBO_JPN_ARCHIVE_URL")" &
 
 # shellcheck disable=SC2046
 wait $(jobs -p) || return 1
