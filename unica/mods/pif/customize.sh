@@ -1,5 +1,23 @@
+read -r VERSION FINGERPRINT < <(
+    curl -sL "https://github.com/UN1CA/static_resources/raw/refs/heads/sixteen/pif/pif.json" \
+    | jq -r '[.VERSION, .FINGERPRINT] | @tsv'
+) || {
+    LOGE "Failed to fetch pif.json"
+    return 1
+}
+
 APPLY_PATCH "system" "system/framework/framework.jar" \
     "$MODPATH/framework.jar/0001-Introduce-PlayIntegrityHooks.patch"
+SMALI_PATCH "system" "system/framework/framework.jar" \
+    "smali_classes6/io/mesalabs/unica/PlayIntegrityHooks.smali" "replaceall" \
+    'CONFIG_PIF_FINGERPRINT' \
+    "$FINGERPRINT" \
+    > /dev/null
+SMALI_PATCH "system" "system/framework/framework.jar" \
+    "smali_classes6/io/mesalabs/unica/PlayIntegrityHooks.smali" "replaceall" \
+    'CONFIG_PIF_VERSION' \
+    "$VERSION" \
+    > /dev/null
 SMALI_PATCH "system" "system/framework/framework.jar" \
     "smali/android/app/Instrumentation.smali" "replace" \
     'newApplication(Ljava/lang/Class;Landroid/content/Context;)Landroid/app/Application;' \
@@ -20,3 +38,5 @@ if [ ! -f "$APKTOOL_DIR/system/framework/framework.jar/smali_classes6/io/mesalab
         "smali_classes6/io/mesalabs/unica/PlayIntegrityHooks.smali" "return" \
         'shouldBlockKeyAttestation()Z' 'true'
 fi
+
+unset FINGERPRINT VERSION
