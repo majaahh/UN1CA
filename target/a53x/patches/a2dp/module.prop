@@ -1,0 +1,4 @@
+id=a2dp
+name=A2DP offload
+author=Majaahh, Flopster101
+description=Force enables "Turn off A2DP hardware offload" toggle and disables VBR AAC codec.
