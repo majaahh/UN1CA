@@ -20,7 +20,7 @@
 	<local name="SUPPORT_LOWER_THRESHOLD_BM" value="true"  />
 	
 	<!-- ESTPP -->
-	<local name="SUPPORT_PET_DETECTION" value="false"  />
+	<local name="SUPPORT_PET_DETECTION" value="true"  />
 	
 	<!-- STC -->
 	<local name="SUPPORT_SINGLE_BOKEH_PROCESSING" value="false"  />
