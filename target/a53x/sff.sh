@@ -3,5 +3,8 @@
 
 # SEC Floating Feature configuration file for Galaxy A53 5G (a53x)
 
+# Face Clustering
+SEC_FLOATING_FEATURE_GALLERY_CONFIG_FACE_CLUSTER_VERSION=SRCB_V5
+
 # Refresh Rate
 SEC_FLOATING_FEATURE_LCD_CONFIG_HFR_MODE=2
