@@ -152,7 +152,8 @@
     <local name="SINGLE_TAKE_PHOTO_LOW_PERFORMANCE" value="true" />
     <local name="SUPPORT_SINGLE_TAKE_COLLAGES" value="true" />
     <local name="SUPPORT_SINGLE_TAKE_HIGHLIGHT_VIDEOS" value="true" />
-    
+    <local name="SUPPORT_SINGLE_TAKE_EXTENDED_CAPTURE" value="true" />
+
 	<!-- Night features -->
     <local name="SUPPORT_NIGHT_MODE_REAR_LENS" value="true" />
     <local name="SUPPORT_NIGHT_MODE_ZOOM" value="true" />
