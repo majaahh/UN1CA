@@ -1,0 +1,4 @@
+id=partitions
+name=Partitions
+author=Majaahh
+description=Separates /system_ext from /system.
