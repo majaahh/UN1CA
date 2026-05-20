@@ -1,0 +1,41 @@
+From da82376cc9252e1b39a0d5c80fac0aee4b29eb5a Mon Sep 17 00:00:00 2001
+From: Majaahh <maja.blaszczak@proton.me>
+Date: Wed, 20 May 2026 20:39:45 +0200
+Subject: [PATCH] Nuke KNOX UCS
+
+Change-Id: Ic77a1e3b4529ad430b8261550f34a83af6a79b80
+Signed-off-by: Majaahh <maja.blaszczak@proton.me>
+---
+ smali_classes6/com/samsung/android/knox/SemPersonaManager.smali | 2 +-
+ smali_classes6/com/samsung/android/rune/CoreRune.smali          | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/smali_classes6/com/samsung/android/knox/SemPersonaManager.smali b/smali_classes6/com/samsung/android/knox/SemPersonaManager.smali
+index 7db72318..7fabe686 100644
+--- a/smali_classes6/com/samsung/android/knox/SemPersonaManager.smali
++++ b/smali_classes6/com/samsung/android/knox/SemPersonaManager.smali
+@@ -341,7 +341,7 @@
+ 
+ .field public static final greylist SEC_PRODUCT_FEATURE_KNOX_SUPPORT_MDM:Z = true
+ 
+-.field private static final greylist SEC_PRODUCT_FEATURE_KNOX_SUPPORT_UCS:Z = true
++.field private static final greylist SEC_PRODUCT_FEATURE_KNOX_SUPPORT_UCS:Z = false
+ 
+ .field private static final greylist SETTINGS_INTENT_FORWARD_BLOCKLIST_FOR_SF:[Ljava/lang/String;
+ 
+diff --git a/smali_classes6/com/samsung/android/rune/CoreRune.smali b/smali_classes6/com/samsung/android/rune/CoreRune.smali
+index 3619eba0..454a55c0 100644
+--- a/smali_classes6/com/samsung/android/rune/CoreRune.smali
++++ b/smali_classes6/com/samsung/android/rune/CoreRune.smali
+@@ -1204,7 +1204,7 @@
+ 
+ .field public static final blacklist KNOX_SUPPORT_MDM:Z = true
+ 
+-.field public static final blacklist KNOX_SUPPORT_UCS:Z = true
++.field public static final blacklist KNOX_SUPPORT_UCS:Z = false
+ 
+ .field public static final blacklist KNOX_SUPPORT_VPN:Z = true
+ 
+-- 
+2.54.0
+

@@ -1,0 +1,241 @@
+From 284a1f4216f5718a0df8fbd7f0bf282dcf098b6c Mon Sep 17 00:00:00 2001
+From: Majaahh <maja.blaszczak@proton.me>
+Date: Wed, 20 May 2026 21:07:30 +0200
+Subject: [PATCH] Nuke KNOX UCS
+
+Change-Id: Ia694c0027d4345da41df241c19007bdada8530d5
+Signed-off-by: Majaahh <maja.blaszczak@proton.me>
+---
+ .../knox/containercore/common/Utils.smali     | 208 +-----------------
+ 1 file changed, 1 insertion(+), 207 deletions(-)
+
+diff --git a/smali/com/samsung/android/knox/containercore/common/Utils.smali b/smali/com/samsung/android/knox/containercore/common/Utils.smali
+index 8861da7..200e9ca 100644
+--- a/smali/com/samsung/android/knox/containercore/common/Utils.smali
++++ b/smali/com/samsung/android/knox/containercore/common/Utils.smali
+@@ -741,48 +741,6 @@
+     return-object p0
+ .end method
+ 
+-.method private static getVendorName(ILcom/samsung/android/knox/ucm/core/IUcmService;)Ljava/lang/String;
+-    .locals 1
+-
+-    :try_start_0
+-    invoke-interface {p1, p0}, Lcom/samsung/android/knox/ucm/core/IUcmService;->getKeyguardStorageForCurrentUser(I)Ljava/lang/String;
+-
+-    move-result-object p0
+-    :try_end_0
+-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+-
+-    return-object p0
+-
+-    :catch_0
+-    move-exception p0
+-
+-    new-instance p1, Ljava/lang/StringBuilder;
+-
+-    invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
+-
+-    const-string v0, "Error in getKeyguardStorageForCurrentUser: "
+-
+-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {p0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+-
+-    move-result-object p0
+-
+-    invoke-virtual {p1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object p0
+-
+-    const-string p1, "KNOXCORE::Util"
+-
+-    invoke-static {p1, p0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+-
+-    const/4 p0, 0x0
+-
+-    return-object p0
+-.end method
+-
+ .method public static handleProfileLock(Landroid/content/Context;I)I
+     .locals 6
+ 
+@@ -1223,172 +1181,8 @@
+     return v0
+ .end method
+ 
+-.method private static isValid(Ljava/lang/String;)Z
+-    .locals 1
+-
+-    invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+-
+-    move-result v0
+-
+-    if-nez v0, :cond_0
+-
+-    const-string v0, "None"
+-
+-    invoke-virtual {p0, v0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+-
+-    move-result p0
+-
+-    if-nez p0, :cond_0
+-
+-    const/4 p0, 0x1
+-
+-    return p0
+-
+-    :cond_0
+-    const/4 p0, 0x0
+-
+-    return p0
+-.end method
+-
+-.method private static resetUCMKeyguard(ILcom/samsung/android/knox/ucm/core/IUcmService;)V
+-    .locals 4
+-    .annotation system Ldalvik/annotation/Throws;
+-        value = {
+-            Landroid/os/RemoteException;
+-        }
+-    .end annotation
+-
+-    const/4 v0, 0x0
+-
+-    invoke-interface {p1, p0, v0}, Lcom/samsung/android/knox/ucm/core/IUcmService;->configureKeyguardSettings(ILjava/lang/String;)Z
+-
+-    move-result v1
+-
+-    const-string v2, "KNOXCORE::Util"
+-
+-    if-eqz v1, :cond_0
+-
+-    :try_start_0
+-    new-instance v1, Landroid/os/Bundle;
+-
+-    invoke-direct {v1}, Landroid/os/Bundle;-><init>()V
+-
+-    const-string v3, "userId"
+-
+-    invoke-virtual {v1, v3, p0}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
+-
+-    const/16 p0, 0x13
+-
+-    invoke-interface {p1, v0, p0, v1}, Lcom/samsung/android/knox/ucm/core/IUcmService;->notifyChangeToPlugin(Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
+-
+-    new-instance p0, Ljava/lang/StringBuilder;
+-
+-    invoke-direct {p0}, Ljava/lang/StringBuilder;-><init>()V
+-
+-    const-string p1, "notifyChangeToPlugin KEYGUARD_SET : "
+-
+-    invoke-virtual {p0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {p0, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object p0
+-
+-    invoke-static {v2, p0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+-    :try_end_0
+-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+-
+-    goto :goto_0
+-
+-    :catch_0
+-    move-exception p0
+-
+-    invoke-virtual {p0}, Ljava/lang/Exception;->printStackTrace()V
+-
+-    :goto_0
+-    const-string p0, "success to ucm keyguard configure disable"
+-
+-    invoke-static {v2, p0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+-
+-    return-void
+-
+-    :cond_0
+-    const-string p0, "Failed to ucm keyguard configure disable"
+-
+-    invoke-static {v2, p0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+-
+-    return-void
+-.end method
+-
+ .method public static resetUCMKeyguardIfNeeded(I)V
+-    .locals 3
+-
+-    new-instance v0, Ljava/lang/StringBuilder;
+-
+-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+-
+-    const-string v1, "resetUCMKeyguard for user : "
+-
+-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+-
+-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+-
+-    move-result-object v0
+-
+-    const-string v1, "KNOXCORE::Util"
+-
+-    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+-
+-    const-string v0, "com.samsung.ucs.ucsservice"
+-
+-    invoke-static {v0}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
+-
+-    move-result-object v0
+-
+-    invoke-static {v0}, Lcom/samsung/android/knox/ucm/core/IUcmService$Stub;->asInterface(Landroid/os/IBinder;)Lcom/samsung/android/knox/ucm/core/IUcmService;
+-
+-    move-result-object v0
+-
+-    if-nez v0, :cond_0
+-
+-    const-string p0, "ucmBinder == null"
+-
+-    invoke-static {v1, p0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+-
+-    return-void
+-
+-    :cond_0
+-    invoke-static {p0, v0}, Lcom/samsung/android/knox/containercore/common/Utils;->getVendorName(ILcom/samsung/android/knox/ucm/core/IUcmService;)Ljava/lang/String;
+-
+-    move-result-object v2
+-
+-    invoke-static {v2}, Lcom/samsung/android/knox/containercore/common/Utils;->isValid(Ljava/lang/String;)Z
+-
+-    move-result v2
+-
+-    if-nez v2, :cond_1
+-
+-    const-string p0, "UCM keyguard is not enabled"
+-
+-    invoke-static {v1, p0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+-
+-    return-void
+-
+-    :cond_1
+-    :try_start_0
+-    invoke-static {p0, v0}, Lcom/samsung/android/knox/containercore/common/Utils;->resetUCMKeyguard(ILcom/samsung/android/knox/ucm/core/IUcmService;)V
+-    :try_end_0
+-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+-
+-    return-void
+-
+-    :catch_0
+-    move-exception p0
+-
+-    invoke-virtual {p0}, Ljava/lang/Exception;->printStackTrace()V
++    .locals 0
+ 
+     return-void
+ .end method
+-- 
+2.54.0
+

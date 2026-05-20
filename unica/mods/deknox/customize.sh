@@ -329,8 +329,15 @@ else
         "$MODPATH/blockchain/services.jar/0001-Nuke-BlockchainTZService.patch"
 fi
 
-# TODO get rid of the following features
 # SEC_PRODUCT_FEATURE_KNOX_SUPPORT_UCS
+APPLY_PATCH "system" "system/framework/framework.jar" \
+    "$MODPATH/ucs/framework.jar/0001-Nuke-Knox-UCS.patch"
+APPLY_PATCH "system" "system/priv-app/KnoxCore/KnoxCore.apk" \
+    "$MODPATH/ucs/KnoxCore.apk/0001-Nuke-Knox-UCS.patch"
+APPLY_PATCH "system" "system/priv-app/SecSettings/SecSettings.apk" \
+    "$MODPATH/ucs/SecSettings.apk/0001-Nuke-Knox-UCS.patch"
+
+# TODO get rid of the following features
 # SEC_PRODUCT_FEATURE_FRAMEWORK_SUPPORT_MOBILE_PAYMENT
 
 LOG "- Restoring original SourceFile attribute in /system/system/framework/services.jar"
