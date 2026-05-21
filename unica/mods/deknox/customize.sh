@@ -281,7 +281,8 @@ SMALI_PATCH "system_ext" "priv-app/SystemUI/SystemUI.apk" \
     'isBldpEventSupported()Z' 'false'
 
 # SEC_PRODUCT_FEATURE_KNOX_SUPPORT_MPOS
-# TODO add services.jar patch
+APPLY_PATCH "system" "system/framework/services.jar" \
+    "$MODPATH/mpos/services.jar/0001-Nuke-Knox-MPOS.patch"
 SMALI_PATCH "system" "system/app/Traceur/Traceur.apk" \
     "smali/com/samsung/android/knox/integrity/EnhancedAttestationPolicy.smali" "return" \
     'isMposSupported()Z' 'false'
