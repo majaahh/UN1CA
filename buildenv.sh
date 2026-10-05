@@ -33,7 +33,7 @@ _GET_SRC_DIR()
 
 _PRINT_USAGE()
 {
-    echo "Usage: source buildenv.sh [--debug] <target>" >&2
+    echo "Usage: source buildenv.sh [--no-debug] <target>" >&2
     echo "Available devices:" >&2
     printf '%s\n' "${TARGETS[@]}" >&2
 }
@@ -99,7 +99,7 @@ fi
 
 unset -f _GET_SRC_DIR
 
-export DEBUG=false
+export DEBUG=true
 export SRC_DIR
 export OUT_DIR="$SRC_DIR/out"
 export ODIN_DIR="$OUT_DIR/odin"
@@ -115,8 +115,8 @@ while IFS= read -r t; do
 done < <(find "$SRC_DIR/target" -mindepth 1 -maxdepth 1 -type d -printf "%f\n" | sort)
 
 while [[ "$1" == "-"* ]]; do
-    if [[ "$1" == "--debug" ]]; then
-        export DEBUG=true
+    if [[ "$1" == "--no-debug" ]]; then
+        export DEBUG=false
     elif [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
         _PRINT_USAGE
         return 0
