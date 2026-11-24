@@ -1,0 +1,179 @@
+From 569b01e51a240867eb011f83727f69640471cfb1 Mon Sep 17 00:00:00 2001
+From: Maja Błaszczak <mhb@lineageos.org>
+Date: Tue, 24 Nov 2026 19:12:05 +0100
+Subject: [PATCH] Allow screen lock settings in Retail mode
+
+Change-Id: Ic99dcd81c078ba085f498658aada7f993f05c6cd
+---
+ ...kGeneric$ChooseLockGenericFragment$1.smali | 18 ------
+ ...hboardScreenLockPreferenceController.smali | 55 -------------------
+ ...pLevelLockScreenPreferenceController.smali | 15 -----
+ .../ScreenLockTypePreferenceController.smali  | 13 -----
+ 4 files changed, 101 deletions(-)
+
+diff --git a/smali/com/android/settings/password/ChooseLockGeneric$ChooseLockGenericFragment$1.smali b/smali/com/android/settings/password/ChooseLockGeneric$ChooseLockGenericFragment$1.smali
+index fd738ec..1d3a39c 100644
+--- a/smali/com/android/settings/password/ChooseLockGeneric$ChooseLockGenericFragment$1.smali
++++ b/smali/com/android/settings/password/ChooseLockGeneric$ChooseLockGenericFragment$1.smali
+@@ -281,24 +281,6 @@
+ .method public final isPageSearchEnabled(Landroid/content/Context;)Z
+     .locals 0
+ 
+-    invoke-static {p1}, Lcom/samsung/android/settings/Rune;->isShopDemo(Landroid/content/Context;)Z
+-
+-    move-result p0
+-
+-    if-nez p0, :cond_1
+-
+-    invoke-static {p1}, Lcom/samsung/android/settings/Rune;->isVzwDemoMode(Landroid/content/Context;)Z
+-
+-    move-result p0
+-
+-    if-nez p0, :cond_1
+-
+-    invoke-static {}, Lcom/samsung/android/settings/Rune;->isLDUModel()Z
+-
+-    move-result p0
+-
+-    if-nez p0, :cond_1
+-
+     invoke-static {p1}, Lcom/samsung/android/settings/lockscreen/LockUtils;->isLockMenuDisabledByEdm(Landroid/content/Context;)Z
+ 
+     move-result p0
+diff --git a/smali_classes3/com/samsung/android/settings/privacy/SecurityDashboardScreenLockPreferenceController.smali b/smali_classes3/com/samsung/android/settings/privacy/SecurityDashboardScreenLockPreferenceController.smali
+index 00bbae8..1360c79 100644
+--- a/smali_classes3/com/samsung/android/settings/privacy/SecurityDashboardScreenLockPreferenceController.smali
++++ b/smali_classes3/com/samsung/android/settings/privacy/SecurityDashboardScreenLockPreferenceController.smali
+@@ -278,28 +278,6 @@
+ 
+     iput-object p1, p0, Lcom/samsung/android/settings/privacy/SecurityDashboardScreenLockPreferenceController;->mStatusPreference:Lcom/samsung/android/settings/widget/SecurityDashboardStatusPreference;
+ 
+-    invoke-static {}, Lcom/samsung/android/settings/Rune;->isLDUModel()Z
+-
+-    move-result p1
+-
+-    if-nez p1, :cond_0
+-
+-    iget-object p1, p0, Lcom/android/settingslib/core/AbstractPreferenceController;->mContext:Landroid/content/Context;
+-
+-    invoke-static {p1}, Lcom/samsung/android/settings/Rune;->isShopDemo(Landroid/content/Context;)Z
+-
+-    move-result p1
+-
+-    if-eqz p1, :cond_1
+-
+-    :cond_0
+-    iget-object p1, p0, Lcom/samsung/android/settings/privacy/SecurityDashboardPreferenceController;->mPreference:Lcom/samsung/android/settings/widget/SecExpandableMenuPreference;
+-
+-    const/4 v0, 0x0
+-
+-    invoke-virtual {p1, v0}, Landroidx/preference/Preference;->setIntent(Landroid/content/Intent;)V
+-
+-    :cond_1
+     invoke-direct {p0}, Lcom/samsung/android/settings/privacy/SecurityDashboardScreenLockPreferenceController;->updateMenuStatus()V
+ 
+     return-void
+@@ -439,25 +417,8 @@
+ 
+     if-eqz v1, :cond_3
+ 
+-    invoke-static {}, Lcom/samsung/android/settings/Rune;->isLDUModel()Z
+-
+-    move-result p1
+-
+     const/4 v1, 0x1
+ 
+-    if-nez p1, :cond_2
+-
+-    iget-object p1, p0, Lcom/android/settingslib/core/AbstractPreferenceController;->mContext:Landroid/content/Context;
+-
+-    invoke-static {p1}, Lcom/samsung/android/settings/Rune;->isShopDemo(Landroid/content/Context;)Z
+-
+-    move-result p1
+-
+-    if-eqz p1, :cond_0
+-
+-    goto :goto_0
+-
+-    :cond_0
+     invoke-static {v0}, Lcom/samsung/android/settings/Rune;->isSamsungDexMode(Landroid/content/Context;)Z
+ 
+     move-result p1
+@@ -499,22 +460,6 @@
+ 
+     return v1
+ 
+-    :cond_2
+-    :goto_0
+-    iget-object p0, p0, Lcom/android/settingslib/core/AbstractPreferenceController;->mContext:Landroid/content/Context;
+-
+-    const p1, 0x7f142b3f
+-
+-    const/4 v0, 0x0
+-
+-    invoke-static {p0, p1, v0}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+-
+-    move-result-object p0
+-
+-    invoke-virtual {p0}, Landroid/widget/Toast;->show()V
+-
+-    return v1
+-
+     :cond_3
+     invoke-super {p0, p1}, Lcom/android/settings/core/BasePreferenceController;->handlePreferenceTreeClick(Landroidx/preference/Preference;)Z
+ 
+diff --git a/smali_classes4/com/samsung/android/settings/homepage/TopLevelLockScreenPreferenceController.smali b/smali_classes4/com/samsung/android/settings/homepage/TopLevelLockScreenPreferenceController.smali
+index 3eeedb0..62b8c7c 100644
+--- a/smali_classes4/com/samsung/android/settings/homepage/TopLevelLockScreenPreferenceController.smali
++++ b/smali_classes4/com/samsung/android/settings/homepage/TopLevelLockScreenPreferenceController.smali
+@@ -152,23 +152,8 @@
+ 
+     invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
+ 
+-    iget-object v3, p0, Lcom/android/settingslib/core/AbstractPreferenceController;->mContext:Landroid/content/Context;
+-
+-    invoke-static {v3}, Lcom/samsung/android/settings/Rune;->isShopDemo(Landroid/content/Context;)Z
+-
+-    move-result v3
+-
+-    if-nez v3, :cond_0
+-
+-    invoke-static {}, Lcom/samsung/android/settings/Rune;->isLDUModel()Z
+-
+-    move-result v3
+-
+-    if-nez v3, :cond_0
+-
+     invoke-virtual {v2, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+ 
+-    :cond_0
+     invoke-static {}, Lcom/samsung/android/settings/lockscreen/LockUtils;->isSupportAodService()Z
+ 
+     move-result v0
+diff --git a/smali_classes4/com/samsung/android/settings/lockscreen/controller/ScreenLockTypePreferenceController.smali b/smali_classes4/com/samsung/android/settings/lockscreen/controller/ScreenLockTypePreferenceController.smali
+index 5657cb8..b5249f7 100644
+--- a/smali_classes4/com/samsung/android/settings/lockscreen/controller/ScreenLockTypePreferenceController.smali
++++ b/smali_classes4/com/samsung/android/settings/lockscreen/controller/ScreenLockTypePreferenceController.smali
+@@ -589,19 +589,6 @@
+ .method public getAvailabilityStatus()I
+     .locals 2
+ 
+-    iget-object v0, p0, Lcom/android/settingslib/core/AbstractPreferenceController;->mContext:Landroid/content/Context;
+-
+-    invoke-static {v0}, Lcom/samsung/android/settings/Rune;->isShopDemo(Landroid/content/Context;)Z
+-
+-    move-result v0
+-
+-    if-eqz v0, :cond_0
+-
+-    const/4 p0, 0x4
+-
+-    return p0
+-
+-    :cond_0
+     iget-object v0, p0, Lcom/samsung/android/settings/lockscreen/controller/ScreenLockTypePreferenceController;->mParentFragment:Landroidx/fragment/app/Fragment;
+ 
+     if-eqz v0, :cond_1
+-- 
+2.55.0
+
