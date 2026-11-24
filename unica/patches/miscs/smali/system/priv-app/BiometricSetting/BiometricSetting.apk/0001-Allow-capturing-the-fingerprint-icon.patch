@@ -1,0 +1,41 @@
+From 9b9f05914e89433be5fe2e86ded021946dcff6b2 Mon Sep 17 00:00:00 2001
+From: Maja Błaszczak <mhb@lineageos.org>
+Date: Tue, 24 Nov 2026 20:52:43 +0100
+Subject: [PATCH] Allow capturing the fingerprint icon
+
+Change-Id: I9e161cbad226a5a31a30db3f77722fb226ff59fd
+---
+ .../setting/fingerprint/UdfpsSensorWindow.smali | 17 -----------------
+ 1 file changed, 17 deletions(-)
+
+diff --git a/smali/com/samsung/android/biometrics/app/setting/fingerprint/UdfpsSensorWindow.smali b/smali/com/samsung/android/biometrics/app/setting/fingerprint/UdfpsSensorWindow.smali
+index d87b5ae..0cc5d0d 100644
+--- a/smali/com/samsung/android/biometrics/app/setting/fingerprint/UdfpsSensorWindow.smali
++++ b/smali/com/samsung/android/biometrics/app/setting/fingerprint/UdfpsSensorWindow.smali
+@@ -219,23 +219,6 @@
+ 
+     iput v0, v1, Landroid/view/WindowManager$LayoutParams;->privateFlags:I
+ 
+-    iget-object p0, p0, Lcom/samsung/android/biometrics/app/setting/SysUiWindow;->mContext:Landroid/content/Context;
+-
+-    invoke-static {p0}, Lcom/samsung/android/biometrics/app/setting/Utils;->isTpaMode(Landroid/content/Context;)Z
+-
+-    move-result p0
+-
+-    if-nez p0, :cond_0
+-
+-    iget p0, v1, Landroid/view/WindowManager$LayoutParams;->privateFlags:I
+-
+-    const/high16 v0, 0x100000
+-
+-    or-int/2addr p0, v0
+-
+-    iput p0, v1, Landroid/view/WindowManager$LayoutParams;->privateFlags:I
+-
+-    :cond_0
+     const/4 p0, 0x0
+ 
+     invoke-virtual {v1, p0}, Landroid/view/WindowManager$LayoutParams;->setFitInsetsTypes(I)V
+-- 
+2.55.0
+
